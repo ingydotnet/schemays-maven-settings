@@ -1,0 +1,32 @@
+!YS-v0
+
+--- !code
+ns: schemays
+
+defn defntype():
+  =>::
+    foo:: \(say 1234)
+
+defn string?(o):
+  when-not clojure::core/string?(o):
+    die: +[ "$o is not a string" ]
+  =>: o
+
+defn string?(o):
+  when-not clojure::core/string?(o):
+    die: +[ "$o is not a string" ]
+  =>: o
+
+defn kebab-word?(o): o
+
+--- !code
+
+ns: maven-settings-schema
+use schemays: :as T
+
+defn user-name(o):
+  t =: T/defntype()
+  =>: t.foo:call
+  T/string?: o
+  T/kebab-word?: o
+  =>: o

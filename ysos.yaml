@@ -1,0 +1,39 @@
+!YS-v0
+
+ns: YSOS
+
+classes =: atom({})
+
+defn class(name body):
+  ...
+
+defn new(o):
+
+--- !code
+use YSOS: :all
+use Types: :as T
+
+breed =:
+  T/enum:
+  - hound
+  - lab
+  - pug
+
+age: T/int-range(1 25)
+
+class Dog::
+  name:: T/name
+  breed:: breed
+  age:: age
+  doggy-age::
+    method []:
+      this.age * 7
+
+--- !code
+use Dog: :all
+
+--- !data
+: !Dog/new
+  name: 'Spot'
+  breed: 'Pug'
+  

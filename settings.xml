@@ -1,0 +1,82 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <localRepository>${user.home}/.m2/repository</localRepository>
+
+    <interactiveMode>true</interactiveMode>
+
+    <offline>false</offline>
+
+    <pluginGroups>
+        <pluginGroup>org.apache.tomcat.maven</pluginGroup>
+    </pluginGroups>
+
+    <servers>
+        <server>
+            <id>internal-baeldung-repository</id>
+            <username>demo-user</username>
+            <password>dummy-password</password>
+            <privateKey>${user.home}/.ssh/bael_key</privateKey>
+            <passphrase>dummy-passphrase</passphrase>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+            <configuration></configuration>
+        </server>
+    </servers>
+
+    <servers>
+        <server>
+            <id>internal-baeldung-repository</id>
+            <username>demo-user</username>
+            <password>dummy-password</password>
+            <privateKey>${user.home}/.ssh/bael_key</privateKey>
+            <passphrase>dummy-passphrase</passphrase>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+            <configuration></configuration>
+        </server>
+    </servers>
+
+    <proxies>
+        <proxy>
+            <id>baeldung-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>baeldung.proxy.com</host>
+            <port>8080</port>
+            <username>demo-user</username>
+            <password>dummy-password</password>
+            <nonProxyHosts>*.baeldung.com|*.apache.org</nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <profiles>
+        <profile>
+            <id>baeldung-test</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
+                <os>
+                    <name>Windows 10</name>
+                    <family>Windows</family>
+                    <arch>amd64</arch>
+                    <version>10.0</version>
+                </os>
+                <property>
+                    <name>mavenVersion</name>
+                    <value>3.0.7</value>
+                </property>
+                <file>
+                    <exists>${basedir}/activation-file.properties</exists>
+                    <missing>${basedir}/deactivation-file.properties</missing>
+                </file>
+            </activation>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>baeldung-test</activeProfile>
+        <activeProfile>adobe-public</activeProfile>
+    </activeProfiles>
+
+</settings>
